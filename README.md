@@ -8,4 +8,4 @@ This method is valid if polygon is convex.
 
 ### concave polygon
 ![](./readme_imgs/in6.gif)
-![](./readme_imgs/in6.gif)
+![](./readme_imgs/out6.gif)
