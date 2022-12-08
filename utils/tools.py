@@ -4,6 +4,7 @@ import cv2
 import math
 import os
 from datetime import datetime
+from shutil import rmtree
 
 def calculate_angle(img: np.ndarray, cal_point: tuple, poly_points: List[tuple], prefix: str) -> list:
     img_draw = img.copy()
@@ -41,5 +42,9 @@ def calculate_angle(img: np.ndarray, cal_point: tuple, poly_points: List[tuple],
     return angle * 180 / math.pi
 
     
+def remove_dummy_data():
+    print("Removing dummy data:", os.path.join(".", "dummy", "in"))
+    rmtree(os.path.join(".", "dummy", "in"))
+    rmtree(os.path.join(".", "dummy", "out"))
     
     

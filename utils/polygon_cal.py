@@ -17,7 +17,18 @@ def polygon(poly_points: List[tuple], in_pt: tuple, out_pt: tuple) -> None:
         cv2.line(img, p1, p2, (0, 0, 0), 5)
     in_angle = calculate_angle(img, in_pt, poly_points, "in")
     out_angle = calculate_angle(img, out_pt, poly_points, "out")
-    print(f"in_pt: total angle: {in_angle : .2f}")
-    print(f"out_pt: total angle: {out_angle: .2f}")
 
+    epsilon = 1e-3
+    print(f"in_pt: total angle: {in_angle : .2f}")
+    if (in_angle - 360) < epsilon:
+        print(f"{in_pt[0]}, {in_pt[1]} is inside of convex polygon")
+    else:
+        print(f"{in_pt[0]}, {in_pt[1]} is outside of convex polygon")
+    print(f"out_pt: total angle: {out_angle: .2f}")
+    if (out_angle - 360) < epsilon:
+        print(f"{out_pt[0]}, {out_pt[1]} is inside of convex polygon")
+    else:
+        print(f"{out_pt[0]}, {out_pt[1]} is outside of convex polygon")
+
+    print()
     return
