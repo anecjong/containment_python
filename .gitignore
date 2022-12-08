@@ -1,3 +1,4 @@
 dummy/in/
 dummy/out/
 results/*.gif
+utils/__pycache__/
