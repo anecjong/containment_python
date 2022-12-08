@@ -12,7 +12,7 @@ def calculate_angle(img: np.ndarray, cal_point: tuple, poly_points: List[tuple],
     cv2.circle(img_draw, cal_point, 5, (0, 255, 0), -1)
 
     angle = 0
-    path_ = os.path.join("results", prefix, str(datetime.now().microsecond))
+    path_ = os.path.join("dummy", prefix, str(datetime.now().microsecond))
     for idx in range(len(poly_points)):
         p1, p2 = poly_points[idx], poly_points[idx-1]
         vec_a = np.array([p1[0] - cal_point[0], p1[1] - cal_point[1]])
@@ -36,7 +36,7 @@ def calculate_angle(img: np.ndarray, cal_point: tuple, poly_points: List[tuple],
     cv2.putText(tmptmp, f"{angle * 180 / math.pi: .3f}", (10, 40), 2, 1, (0, 0, 0))
     for i in range(5):
         cv2.imwrite(os.path.join(path_, f"{i+len(poly_points)}.png"), tmptmp)
-    os.system("convert -delay 15 -loop 0  " + os.path.join(path_, "*.png") + " " + os.path.join(path_, "vis.gif"))
+    os.system("convert -delay 15 -loop 0  " + os.path.join(path_, "*.png") + " " + os.path.join("results", prefix+str(len(poly_points))+".gif"))
 
     return angle % math.pi * 180 / math.pi
 

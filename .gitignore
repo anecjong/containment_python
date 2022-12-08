@@ -1,2 +1,3 @@
-results/in/
-results/out/
+dummy/in/
+dummy/out/
+results/*.gif
