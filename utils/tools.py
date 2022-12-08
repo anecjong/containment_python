@@ -32,11 +32,11 @@ def calculate_angle(img: np.ndarray, cal_point: tuple, poly_points: List[tuple],
 
         if not os.path.exists(path_):
             os.makedirs(path_)
-        cv2.imwrite(os.path.join(path_, f"{idx}.png"), tmp_img)
+        cv2.imwrite(os.path.join(path_, f"{idx: 03}.png"), tmp_img)
     tmptmp = img.copy()
     cv2.putText(tmptmp, f"{angle * 180 / math.pi: .3f}", (10, 40), 2, 1, (0, 0, 0))
     for i in range(5):
-        cv2.imwrite(os.path.join(path_, f"{i+len(poly_points)}.png"), tmptmp)
+        cv2.imwrite(os.path.join(path_, f"{i+len(poly_points): 03}.png"), tmptmp)
     os.system("convert -delay 15 -loop 0  " + os.path.join(path_, "*.png") + " " + os.path.join("results", prefix+str(len(poly_points))+".gif"))
 
     return angle * 180 / math.pi
